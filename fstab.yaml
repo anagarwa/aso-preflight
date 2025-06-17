@@ -1,5 +1,0 @@
-mountpoints:
-  /:
-    url: "https://author-p125761-e1234605.adobeaemcloud.com/bin/franklin.delivery/anagarwa/aso-preflight/main"
-    type: "markup"
-    suffix: ".html"
