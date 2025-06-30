@@ -142,6 +142,23 @@ async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
+  const doFoo = ({ detail: payload }) => {
+    console.log('a custom event happened', payload);
+    // your custom code goes here
+  };
+
+const sk = document.querySelector('aem-sidekick');
+if (sk) {
+  // sidekick already loaded
+    sk.addEventListener('custom:preflight', doFoo);
+} else {
+  // wait for sidekick to be loaded
+  document.addEventListener('sidekick-ready', () => {
+    // sidekick now loaded
+    document.querySelector('aem-sidekick')
+      .addEventListener('custom:preflight', doFoo);
+  }, { once: true });
+}
 }
 
 loadPage();
